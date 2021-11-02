@@ -1,0 +1,128 @@
+PROBLEM:1
+
+Mohammed Ghouse@DESKTOP-8EMMON5 MINGW64 /c/myallnodeprojects/first_app
+$ cd ..
+
+Mohammed Ghouse@DESKTOP-8EMMON5 MINGW64 /c/myallnodeprojects
+$ mkdir assignment
+
+Mohammed Ghouse@DESKTOP-8EMMON5 MINGW64 /c/myallnodeprojects
+$ cd assignment
+
+Mohammed Ghouse@DESKTOP-8EMMON5 MINGW64 /c/myallnodeprojects/assignment
+$ mkdir source
+
+Mohammed Ghouse@DESKTOP-8EMMON5 MINGW64 /c/myallnodeprojects/assignment
+$ mkdir destination
+
+Mohammed Ghouse@DESKTOP-8EMMON5 MINGW64 /c/myallnodeprojects/assignment
+$ cd source
+
+Mohammed Ghouse@DESKTOP-8EMMON5 MINGW64 /c/myallnodeprojects/assignment/source
+$ touch file.txt
+
+Mohammed Ghouse@DESKTOP-8EMMON5 MINGW64 /c/myallnodeprojects/assignment/source
+$ cat > file.txt
+Hey Welcome to FunctionUp bootcamp 
+
+Mohammed Ghouse@DESKTOP-8EMMON5 MINGW64 /c/myallnodeprojects/assignment/source
+$ ls
+file.txt
+
+Mohammed Ghouse@DESKTOP-8EMMON5 MINGW64 /c/myallnodeprojects/assignment/source
+$ cp file.txt destination
+
+Mohammed Ghouse@DESKTOP-8EMMON5 MINGW64 /c/myallnodeprojects/assignment/source
+$ cd destination
+bash: cd: destination: Not a directory
+
+Mohammed Ghouse@DESKTOP-8EMMON5 MINGW64 /c/myallnodeprojects/assignment/source
+$ cd ..
+
+Mohammed Ghouse@DESKTOP-8EMMON5 MINGW64 /c/myallnodeprojects/assignment
+$ cd destination
+
+Mohammed Ghouse@DESKTOP-8EMMON5 MINGW64 /c/myallnodeprojects/assignment/destination
+$ ls
+
+Mohammed Ghouse@DESKTOP-8EMMON5 MINGW64 /c/myallnodeprojects/assignment/destination
+$ cd ..
+
+Mohammed Ghouse@DESKTOP-8EMMON5 MINGW64 /c/myallnodeprojects/assignment
+$ cp source/file.txt destination
+
+Mohammed Ghouse@DESKTOP-8EMMON5 MINGW64 /c/myallnodeprojects/assignment
+$ cd source
+
+Mohammed Ghouse@DESKTOP-8EMMON5 MINGW64 /c/myallnodeprojects/assignment/source
+$ ls
+destination  file.txt
+
+Mohammed Ghouse@DESKTOP-8EMMON5 MINGW64 /c/myallnodeprojects/assignment/source
+$ rmdir destination
+rmdir: failed to remove 'destination': Not a directory
+
+Mohammed Ghouse@DESKTOP-8EMMON5 MINGW64 /c/myallnodeprojects/assignment/source
+$ rm destination
+
+Mohammed Ghouse@DESKTOP-8EMMON5 MINGW64 /c/myallnodeprojects/assignment/source
+$ ls
+file.txt
+
+Mohammed Ghouse@DESKTOP-8EMMON5 MINGW64 /c/myallnodeprojects/assignment/source
+$ cd destination
+bash: cd: destination: No such file or directory
+
+Mohammed Ghouse@DESKTOP-8EMMON5 MINGW64 /c/myallnodeprojects/assignment/source
+$ cd ..
+
+PROBLEM:2
+
+Mohammed Ghouse@DESKTOP-8EMMON5 MINGW64 /c/myallnodeprojects/assignment
+$ cd destination
+
+Mohammed Ghouse@DESKTOP-8EMMON5 MINGW64 /c/myallnodeprojects/assignment/destination
+$ rm file.txt
+Hey Welcome to FunctionUp bootcamp
+
+Mohammed Ghouse@DESKTOP-8EMMON5 MINGW64 /c/myallnodeprojects/assignment/destination
+$ cd ..
+
+Mohammed Ghouse@DESKTOP-8EMMON5 MINGW64 /c/myallnodeprojects/assignment
+$ mv source/file.txt destination
+
+Mohammed Ghouse@DESKTOP-8EMMON5 MINGW64 /c/myallnodeprojects/assignment
+$ cd source
+
+Mohammed Ghouse@DESKTOP-8EMMON5 MINGW64 /c/myallnodeprojects/assignment/source
+$ ls
+
+Mohammed Ghouse@DESKTOP-8EMMON5 MINGW64 /c/myallnodeprojects/assignment/source
+$ cd ..
+
+Mohammed Ghouse@DESKTOP-8EMMON5 MINGW64 /c/myallnodeprojects/assignment
+$ cd destination
+
+Mohammed Ghouse@DESKTOP-8EMMON5 MINGW64 /c/myallnodeprojects/assignment/destination
+$ ls
+file.txt
+
+PROBLEM:3
+
+Mohammed Ghouse@DESKTOP-8EMMON5 MINGW64 /c/myallnodeprojects/assignment/destination
+$ vim file.txt
+
+Mohammed Ghouse@DESKTOP-8EMMON5 MINGW64 /c/myallnodeprojects/assignment/destination
+$ grep -1 "FunctionUp" file.txt
+Hey Welcome to FunctionUp bootcamp
+
+Node.js FunctionUp is a software development technology that is used by some of the biggest players in global business, from Netflix and PayPal to LinkedIn, to build fast, high-quality applications.
+
+This guide is for FunctionUp  anybody looking to learn more about how Node.js works, its pros and cons and how it can help deliver tangible business results.
+
+--
+
+So, FunctionUp let’s get going.
+
+Mohammed Ghouse@DESKTOP-8EMMON5 MINGW64 /c/myallnodeprojects/assignment/destination
+$
