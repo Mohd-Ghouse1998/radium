@@ -20,14 +20,11 @@ const newBookSchema= new mongoose.Schema({
     },
    
     prices: {
-        type:String,
+        type:Number,
         default:0
         
     },
-    sales: {
-        type: Number,
-        default : 0
-    },
+    
     
     stockAvailable:{
         type:Boolean,

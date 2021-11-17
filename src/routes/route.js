@@ -41,6 +41,10 @@ router.post('/createNewBook',  newBookController.createNewBook  );
 router.post("/createNewAuthor", newAuthorController.createNewAuthor);
 
 router.post("/getBookByAuthor",newBookController.getBookByAuthor);
+  
+router.get("/books",newBookController.books);
+
+router.get("/changePrice",newBookController.changePrice)
 
 
 
