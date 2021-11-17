@@ -1,6 +1,6 @@
 const mongoose=require('mongoose')
 
-const bookSchema= new mongoose.Schema({
+const newBookSchema= new mongoose.Schema({
 
 
     bookName: {
@@ -8,39 +8,34 @@ const bookSchema= new mongoose.Schema({
         required: true
     },
     
-    author: String,
-    tags: [ String ], 
+    author_id:{
+        type:String ,
+        required:true,
+        
+    },
+   rating:Number,
     year: {
          type:Number,
          default:2021
     },
    
     prices: {
-        indianPrice: String,
-        europeanPrice: String,
+        type:String,
+        default:0
         
     },
     sales: {
         type: Number,
         default : 0
     },
-    totalPages:Number,
+    
     stockAvailable:{
         type:Boolean,
         default:false
     },
-    completionDate: Date
+   
 
 
 }, {timestamps:true})
 
-
-
-
-module.exports = mongoose.model( 'Newbook', bookSchema ) 
-
-
-
-// Intro to Backend Engineering
-// FunctionUp
-// #Programming #backend #nodejs #bestBookEver #cool #lifeChanging
+module.exports = mongoose.model( 'NewBook1', newBookSchema ) 
