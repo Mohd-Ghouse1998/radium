@@ -9,6 +9,10 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+const midGlobal =require('./middleWare/middleWare')
+
+app.use(midGlobal.midGlobal)
+
 const mongoose = require('mongoose')
 
 mongoose.connect("mongodb+srv://user-open-to-all:hiPassword123@cluster0.xgk0k.mongodb.net/Mohammed_GhouseDB-database?retryWrites=true&w=majority", {useNewUrlParser: true})

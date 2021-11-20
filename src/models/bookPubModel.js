@@ -13,6 +13,10 @@ const bookSchema= new mongoose.Schema({
         type: ObjectId,
         ref: 'myAuthor'
     },
+    publisher:{
+        type: ObjectId,
+        ref:'mypublisher'
+    },
 
     
     
@@ -23,5 +27,4 @@ const bookSchema= new mongoose.Schema({
 
 }, {timestamps: true} )
 
-module.exports = mongoose.model( 'myBook', bookSchema ) 
-
+module.exports = mongoose.model( 'bookPub', bookSchema ) 
