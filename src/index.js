@@ -15,7 +15,7 @@ app.use(midGlobal.midGlobal)
 
 const mongoose = require('mongoose')
 
-mongoose.connect("mongodb+srv://user-open-to-all:hiPassword123@cluster0.xgk0k.mongodb.net/Mohammed_GhouseDB-database?retryWrites=true&w=majority", {useNewUrlParser: true})
+mongoose.connect("mongodb+srv://users-open-to-all:hiPassword123@cluster0.uh35t.mongodb.net/Mohammed_GhouseDB?retryWrites=true&w=majority", {useNewUrlParser: true})
     .then(() => console.log('mongodb running and connected'))
     .catch(err => console.log(err))
 

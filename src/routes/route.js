@@ -5,7 +5,13 @@ const authorController= require("../controllers/authorController")
 const BookController= require("../controllers/bookController")
 const publisherController=require('../controllers/publisherController')
 
-const middleware=require('../middleWare/middleWare')
+//const middleware=require('../middleWare/middleWare')
+
+const productController=require('../controllers/productController')
+const middleWare1=require('../middleWare/middleWare1')
+const userController=require('../controllers/userController')
+const orderController=require('../controllers/orderController')
+
 
 
 router.get('/test-me', function (req, res) {
@@ -28,10 +34,16 @@ router.post('/createBookPub',publisherController.createBookPub)
 router.get('/getBooksPub',publisherController.getBooksPub)
 
 
+//product Api
+
+router.post('/createProduct', productController.createProduct)
+
+//user Api
+router.post('/createUser',middleWare1.middle,userController.createUser)
 
 
-
-
+// order Api
+router.post('/createOrder' ,middleWare1.middle, orderController.createOrder)
 
 
 module.exports = router;
