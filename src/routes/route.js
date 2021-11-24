@@ -1,37 +1,38 @@
 const express = require('express');
 const router = express.Router();
 
-const authorController= require("../controllers/authorController")
-const BookController= require("../controllers/bookController")
-const publisherController=require('../controllers/publisherController')
+// const authorController= require("../controllers/authorController")
+// const BookController= require("../controllers/bookController")
+// const publisherController=require('../controllers/publisherController')
 
-const middleware=require('../middleWare/middleWare')
+//const middleware=require('../middleWare/middleWare')
 
+// const productController=require('../controllers/productController')
+// const middleWare1=require('../middleWare/middleWare1')
+const userController=require('../controllers/userController')
+//const orderController=require('../controllers/orderController')
+
+const loginController=require('../controllers/loginController')
+
+const tokenMiddle=require('../middleWare/middleWare2')
 
 router.get('/test-me', function (req, res) {
     res.send('My first ever api!')
 });
 
-// Authors API
-router.post('/authors',  authorController.createAuthor  );
+
+//user Api
+router.post('/createUser',userController.createUser)
 
 
-// Books API
-router.post('/createBook', BookController.createBook  );
-router.get('/getBooks' ,  BookController.getBooks  );
+// login Api
+router.post('/login' , loginController.login)
 
+//getuser Api
+router.get('/users/:userId', tokenMiddle.tokenMiddle   ,loginController.getDetails)
 
-//publisher Api
-router.post('/publisher',publisherController.createPublisher)
-
-router.post('/createBookPub',publisherController.createBookPub)
-router.get('/getBooksPub',publisherController.getBooksPub)
-
-
-
-
-
-
+//putUser Api
+router.put('/users/:userId', tokenMiddle.tokenMiddle ,loginController.update)
 
 
 module.exports = router;
