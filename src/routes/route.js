@@ -14,7 +14,7 @@ const cryptoController=require("../controllers/cryptoController")
 // router.post("/cowin/getOtp", cowinController.getOtp)
 
 
-// router.get("/getWeather",weatherController.getWeather)
+ router.get("/getWeather",weatherController.getWeather)
  router.get("/getLondon",weatherController.getLondon)
 
 

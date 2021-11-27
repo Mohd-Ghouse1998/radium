@@ -32,13 +32,13 @@ const getLondon=async function(req,res){
     
         console.log("WORKING");
         let states = response.data;
-        res.status(200).send({msg:"sucess", data:states})
+       // res.status(200).send({msg:"sucess", data:states})
         //res.status(200).send({ msg: "Successfully fetched data", data: states });
 
 
-        //let temparature=response.data.main.temp
+        let temparature=response.data.main.temp
 
-        //res.status(200).send({msg:"sucess", data:temparature})
+        res.status(200).send({msg:"sucess", temp:temparature})
     
       } 
       catch (err) {
@@ -76,6 +76,7 @@ const getWeather = async function (req, res) {
   
             cityObjArray.push(obj)
         }
+        
   
         let sorted = cityObjArray.sort(  function(a, b) { return a.temp - b.temp } )
        

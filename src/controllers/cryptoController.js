@@ -39,7 +39,7 @@ const cryptoModel = require('../models/cryptoModel')
 // The above has to be done in one single API and not multiple seperate API’s. SO go step by step and build features into your API one by one.
 
 
-const getTopCrypto = async function (req, res) {
+const getTopCrypto = async function (req, res) {add
     try {
         let options = {
             method: "get",
