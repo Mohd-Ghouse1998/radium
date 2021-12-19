@@ -19,6 +19,19 @@ const isValidObjectId = function(objectId) {
     return mongoose.Types.ObjectId.isValid(objectId)
 }
 
+const validateDate =function(value)
+{
+
+    var pattern = /^([0-9]{4})-([0-9]{2})-([0-9]{2})$/;
+    if (value == null || value == "" || !pattern.test(value)) {
+        //errMessage += "Invalid date of birth\n";
+        return false;
+    }
+    else {
+        return true
+    }
+}
+
 const createBook = async function (req, res) {
     try {
         const requestBody = req.body;
@@ -80,10 +93,16 @@ const createBook = async function (req, res) {
             res.status(400).send({status: false, message: 'Book released date is required'})
             return
         }
-        if (!Date.parse(releasedAt)) {
-            res.status(400).send({ status: false, message: `releasedAt should be an date and format("YYYY-MM-DD")` })
+
+        if(!validateDate(releasedAt)){
+            res.status(400).send({status: false, message: 'releasedAt should be an date and format("YYYY-MM-DD")'})
             return
         }
+
+        // if (!Date.parse(releasedAt)) {
+        //     res.status(400).send({ status: false, message: `releasedAt should be an date and format("YYYY-MM-DD")` })
+        //     return
+        // }
 
         if(userId !==userIdFromToken) {
             res.status(401).send({status: false, message: `Unauthorized access! Owner info doesn't match`});
@@ -234,14 +253,14 @@ const updateBook = async function (req, res) {
             return
         }
 
-        if (title) {
+      //  if (title) {
 
             if (!isValid(title)) {
                 res.status(400).send({ status: false, message: "Title should have some value" })
                 return
             }
 
-            title = String.prototype.trim.call(title)
+           // title = String.prototype.trim.call(title)
             let isTitleAlreadyUsed = await bookModel.findOne({ title })
 
             if (isTitleAlreadyUsed) {
@@ -249,15 +268,15 @@ const updateBook = async function (req, res) {
                 return
             }
             updateData['title'] = title
-        }
-        if (excerpt) {
+       // }
+        //if (excerpt) {
             if (!isValid(excerpt)) {
                 res.status(400).send({ status: false, message: "excerpt should have some value" })
                 return
             }
             updateData['excerpt'] = excerpt
-        }
-        if (ISBN) {
+       //}
+       // if (ISBN) {
 
             if (!isValid(ISBN)) {
                 res.status(400).send({ status: false, message: "ISBN should have some value" })
@@ -272,15 +291,15 @@ const updateBook = async function (req, res) {
                 return
             }
             updateData['ISBN'] = ISBN 
-        }
-        if (releasedAt) {
+     //   }
+       // if (releasedAt) {
 
-            if (!Date.parse(releasedAt)) {
-                res.status(400).send({ status: false, message: `releasedAt should be an date and format("YYYY-MM-DD")` })
+            if(!validateDate(releasedAt)){
+                res.status(400).send({status: false, message: 'releasedAt should be an date and format("YYYY-MM-DD")'})
                 return
             }
             updateData['releasedAt'] = releasedAt
-        }
+      //  }
 
         if (!isValidRequestBody(updateData)) {
             res.status(400).send({ status: false, message: "Please provide correct updating data " })

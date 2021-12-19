@@ -30,6 +30,12 @@ const isValidRating = function (value ) {
 }
 
 
+const isValidNumber=function(value){
+    return Number.isInteger(value)
+}
+
+
+
 const createReview= async function(req,res){
   try{
 
@@ -64,6 +70,11 @@ const createReview= async function(req,res){
         res.status(400).send({status: false, message: 'rating is required'})
         return
     }
+    
+   if(!isValidNumber(rating)){
+        res.status(400).send({status: false, message: 'rating should not be in decimal'})
+        return
+   }
 
     if(!isValidRating(rating)){
         res.status(400).send({status: false, message: `you have to give rating between 1 to 5`})
@@ -156,6 +167,11 @@ const updateReview= async function(req,res){
         return
     }
 
+    if(!isValidNumber(rating)){
+        res.status(400).send({status: false, message: 'rating should not be in decimal'})
+        return
+   }
+
     if(!isValidRating(rating)){
         res.status(400).send({status: false, message: `you have to give rating between 1 to 5`})
         return
@@ -175,13 +191,13 @@ const updateReview= async function(req,res){
     }
 
     const review1 = await reviewModel.findOne({_id:reviewId, isDeleted:false});
+   
 
     if(!review1) {
         res.status(400).send({status: false, message: `review does not exit`})
         return
     }
 
-    const bookDetails= await bookModel.findOne({_id:bookId})
 
     
     const revData=await reviewModel.findByIdAndUpdate({_id:reviewId,},{reviewedBy:reviewedBy,rating:rating,review:review ,reviewedAt:new Date()},{new:true}).select({"_id":1, "bookId":1,"reviewedBy": 1,"reviewedAt": 1,"rating": 1,"review":1 })
@@ -248,12 +264,15 @@ const deleteReview= async function(req,res){
         }
 
         const review = await reviewModel.findOne({_id:reviewId, isDeleted:false});
-
+        
     if(!review) {
         res.status(400).send({status: false, message: `review does not exit`})
         return
     }
 
+    
+
+   
     const reviewDele=await reviewModel.findOneAndUpdate({_id:reviewId},{isDeleted:true})
 
     const bookDetails= await bookModel.findOneAndUpdate({_id:bookId,},{reviews:book.reviews-1},{new:true})
