@@ -33,6 +33,19 @@ const isValidPassword = function (value) {
     
 }
 
+const trimObjValues= function(obj) {
+    return Object.keys(obj).reduce((acc, curr) => {
+      acc[curr] = obj[curr].trim()
+      return acc;
+    }, {});
+  }
+  
+  
+  
+
+
+
+//---------------------------Regester User-------------------------------------
 
 const registerUser = async function (req, res) {
     try {
@@ -43,8 +56,8 @@ const registerUser = async function (req, res) {
         }
 
         // Extract params
-        let  {title , name,  phone, email, password, address} = requestBody; // Object destructing
-
+        let  {title , name,  phone, email, password,address} = requestBody; // Object destructing
+    
         // Validation starts
 
         if(!isValid(title)) {
@@ -92,6 +105,11 @@ const registerUser = async function (req, res) {
             res.status(400).send({status: false, message: `Password must contain characters between 8 to 15`})
             return
         }
+
+         
+       trimObjValues(address)
+        
+       
         
         const isEmailAlreadyUsed = await userModel.findOne({email}); // {email: email} object shorthand property
 
@@ -106,7 +124,7 @@ const registerUser = async function (req, res) {
             return
         }
 
-
+    
         // Validation ends
 
         const userData = {title, name, phone, email, password, address}
@@ -120,7 +138,7 @@ const registerUser = async function (req, res) {
 
 
 
-
+//--------------Login User----------------------------------------------------------
 const loginUser=async function(req,res){
 
  try {

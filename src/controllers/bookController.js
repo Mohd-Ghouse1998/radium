@@ -32,6 +32,8 @@ const validateDate =function(value)
     }
 }
 
+
+//---------------------Create Book----------------------------------------
 const createBook = async function (req, res) {
     try {
         const requestBody = req.body;
@@ -154,13 +156,15 @@ const createBook = async function (req, res) {
 
 
 
-
+//---------------------Get Books------------------------------
 const getBooks=async function(req,res){
 
     try{
          const queryParams=req.query
         let filterQuery={isDeleted:false,deletedAt:null}
         let {userId, category,subcategory}=queryParams
+           
+       
 
             
             if (userId) {
@@ -173,6 +177,7 @@ const getBooks=async function(req,res){
             if (subcategory) {
                 filterQuery["subcategory"] = subcategory
             }
+           
 
             let book = await bookModel.find(filterQuery)
             const book1 = await bookModel.find(filterQuery).select({ "_id": 1, "title": 1, "excerpt": 1, "userId": 1 ,"category":1,"releasedAt":1,"reviews":1 })
@@ -199,6 +204,8 @@ const getBooks=async function(req,res){
 
 }
 
+
+//-------------------Get BookById------------------------------
 const getBooksById = async function (req, res) {
 
     const _id = req.params.bookId
@@ -222,6 +229,8 @@ const getBooksById = async function (req, res) {
 
 
 
+
+//-----------------------Update Book--------------------------------
 const updateBook = async function (req, res) {
     try {
         const _id = req.params.bookId
@@ -319,6 +328,7 @@ const updateBook = async function (req, res) {
 
 
 
+//-------------------DeleteBookById-------------------------------
 const deleteBookByID = async function (req, res) {
     try {
         const params = req.params

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const reviewModel=require('../models/reviewModel')
 const bookModel = require('../models/bookModel')
-const { findOneAndUpdate } = require('../models/reviewModel')
+//const { findOneAndUpdate } = require('../models/reviewModel')
 
 
 const isValid = function(value) {
@@ -190,7 +190,7 @@ const updateReview= async function(req,res){
         return
     }
 
-    const review1 = await reviewModel.findOne({_id:reviewId, isDeleted:false});
+    const review1 = await reviewModel.findOne({_id:reviewId, bookId:bookId , isDeleted:false});
    
 
     if(!review1) {
@@ -263,7 +263,7 @@ const deleteReview= async function(req,res){
             return
         }
 
-        const review = await reviewModel.findOne({_id:reviewId, isDeleted:false});
+        const review = await reviewModel.findOne({_id:reviewId, bookId:bookId, isDeleted:false});
         
     if(!review) {
         res.status(400).send({status: false, message: `review does not exit`})
