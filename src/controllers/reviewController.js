@@ -210,14 +210,14 @@ const updateReview= async function(req,res){
     if (allReview.length == 0) {
 
         const reviewsData = "No one reviewed this book"
-        const bookList=bookDetails
+        const bookList=book
         const data = { bookList, reviewsData }
         return res.status(200).send({ status: true, message:"book list " ,data: data })
     
     }
     
            const reviewsData = allReview
-           const bookList=bookDetails
+           const bookList=book
             const data = { bookList, reviewsData }
             return res.status(200).send({ status: true, message:"book list",  data: data })
     

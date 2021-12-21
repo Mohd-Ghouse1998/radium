@@ -39,6 +39,7 @@ const createBook = async function (req, res) {
         const requestBody = req.body;
         const userIdFromToken=req.userId
 
+
         if(!isValidRequestBody(requestBody)) {
             res.status(400).send({status: false, message: 'Invalid request parameters. Please provide book details'})
             return
@@ -53,11 +54,16 @@ const createBook = async function (req, res) {
        
 
         // Extract params
-        const {title, excerpt, userId, ISBN, category, subcategory, releasedAt} = requestBody;
+        const {title, bookCover, excerpt, userId, ISBN, category, subcategory, releasedAt} = requestBody;
         
         // Validation starts
         if(!isValid(title)) {
             res.status(400).send({status: false, message: 'Book Title is required'})
+            return
+        }
+
+        if(!isValid(bookCover)) {
+            res.status(400).send({status: false, message: 'Book cover is required'})
             return
         }
 
@@ -135,6 +141,7 @@ const createBook = async function (req, res) {
        
         const bookData = {
             title, 
+            bookCover,
             excerpt, 
             userId, 
             ISBN, 

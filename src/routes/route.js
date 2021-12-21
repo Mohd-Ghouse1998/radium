@@ -7,6 +7,8 @@ const bookController=require('../controllers/bookController')
 const reviewController=require('../controllers/reviewController')
 const midd=require('../middleWare/middleWare')
 
+const aws=require('../controllers/awsController')
+
 // user routes
 router.post('/register', userController.registerUser);
 router.post('/login', userController.loginUser)
@@ -22,6 +24,10 @@ router.delete('/books/:bookId',midd.userAuth,bookController.deleteBookByID)
 router.post('/books/:bookId/review', reviewController.createReview)
 router.put('/books/:bookId/review/:reviewId', reviewController.updateReview)
 router.delete('/books/:bookId/review/:reviewId',reviewController.deleteReview)
+
+
+//AWS-s3
+router.post("/write-file-aws",aws.amazonAws)
 
 
 module.exports = router;
